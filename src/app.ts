@@ -1,23 +1,14 @@
-// ZaUI stylesheet
-import "zmp-ui/zaui.css";
-// Tailwind stylesheet
-import "@/css/tailwind.scss";
-// Your stylesheet
-import "@/css/app.scss";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { CardSearch } from './pages/CardSearch';
+import './css/tailwind.css';
 
-// React core
-import React from "react";
-import { createRoot } from "react-dom/client";
+const container = document.getElementById('app');
+if (!container) throw new Error('#app element not found');
 
-// Mount the app
-import Layout from "@/components/layout";
-
-// Expose app configuration
-import appConfig from "../app-config.json";
-
-if (!window.APP_CONFIG) {
-  window.APP_CONFIG = appConfig as any;
-}
-
-const root = createRoot(document.getElementById("app")!);
-root.render(React.createElement(Layout));
+const root = createRoot(container);
+root.render(
+  <React.StrictMode>
+    <CardSearch />
+  </React.StrictMode>
+); 
